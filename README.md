@@ -1,6 +1,6 @@
 # Kavya Gada — AI/ML + Software Engineering Portfolio
 
-![Portfolio Preview](./public/portfolio-preview.png)
+![Portfolio Demo Walkthrough](./public/portfolio-demo.gif)
 
 Production-ready personal portfolio website for **Kavya Gada**, AI/ML Engineer. Built with Next.js 15, App Router, TypeScript, Tailwind CSS, Framer Motion, and Lucide React.
 
@@ -120,6 +120,7 @@ src/
 └── lib/
     └── utils.ts
 public/
+├── portfolio-demo.gif            # Animated site walkthrough demo
 ├── portfolio-preview.png         # Site preview screenshot
 ├── resume.pdf                    # Resume PDF placeholder
 └── favicon.ico
