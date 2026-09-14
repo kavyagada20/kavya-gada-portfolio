@@ -17,8 +17,9 @@ const terminalData: TerminalLine[] = [
     content: [
       'AI/ML & RAG Systems',
       'Agentic Workflows',
-      'Document Intelligence (OCR)',
-      'Core CS & Systems'
+      'CP (Competitive Programming) & Problem Solving',
+      'Core CS & Systems',
+      'Upskilling'
     ]
   },
   { type: 'command', content: 'status' },

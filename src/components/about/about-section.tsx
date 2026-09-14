@@ -26,8 +26,7 @@ export const AboutSection: React.FC = () => {
               "Multi-agent workflows",
               "Ingestion & OCR",
               "Vector search",
-              "ChromaDB",
-              "FAISS"
+              "ChromaDB"
             ]}
           />
 

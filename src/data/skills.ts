@@ -37,7 +37,6 @@ export const skillsData: SkillCategory[] = [
     title: "Databases & Vector Stores",
     skills: [
       "ChromaDB",
-      "FAISS",
       "SQLite",
       "MySQL",
       "Vector Search & Hybrid Retrieval"
