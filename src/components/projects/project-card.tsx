@@ -24,15 +24,17 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, isPrimary = f
         
         {/* Header Badges & Links */}
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             {isPrimary && (
               <span className="px-2.5 py-0.5 text-xs font-mono font-semibold rounded-full bg-accent-blue/20 text-accent-blue border border-accent-blue/40">
                 ★ FEATURED PROJECT
               </span>
             )}
-            <span className="text-xs font-mono text-text-dim">
-              System Architecture & RAG
-            </span>
+            {project.period && (
+              <span className="px-2.5 py-0.5 text-xs font-mono rounded-full bg-bg/80 text-text-muted border border-border">
+                {project.period}
+              </span>
+            )}
           </div>
 
           <div className="flex items-center gap-3">

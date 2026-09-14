@@ -17,7 +17,7 @@ const terminalData: TerminalLine[] = [
     content: [
       'AI/ML & RAG Systems',
       'Agentic Workflows',
-      'CP (Competitive Programming) & Problem Solving',
+      'DSA & Problem Solving',
       'Core CS & Systems',
       'Upskilling'
     ]

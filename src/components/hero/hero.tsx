@@ -54,7 +54,7 @@ export const HeroSection: React.FC = () => {
             {/* Call To Action Buttons */}
             <div className="pt-3 flex flex-wrap items-center gap-4">
               <CTAButton
-                href="#projects"
+                href="/#projects"
                 variant="primary"
                 size="lg"
                 icon={<ArrowRight className="w-4 h-4" />}

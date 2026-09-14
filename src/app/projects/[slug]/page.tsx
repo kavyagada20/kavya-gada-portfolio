@@ -57,9 +57,16 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
 
       {/* Header Section */}
       <div className="space-y-4">
-        <span className="px-3 py-1 text-xs font-mono font-semibold rounded-full bg-accent-blue/15 text-accent-blue border border-accent-blue/30 inline-block">
-          Case Study & System Design
-        </span>
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="px-3 py-1 text-xs font-mono font-semibold rounded-full bg-accent-blue/15 text-accent-blue border border-accent-blue/30 inline-block">
+            Case Study & System Design
+          </span>
+          {project.period && (
+            <span className="px-3 py-1 text-xs font-mono rounded-full bg-bg-elevated text-text-muted border border-border inline-block">
+              {project.period}
+            </span>
+          )}
+        </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-text-primary">
           {project.title}
         </h1>
@@ -126,11 +133,38 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         </div>
       </div>
 
-      {/* System Architecture Visualization */}
+      {/* System Architecture Diagram Image */}
+      {project.architectureImage && (
+        <div className="space-y-4 rounded-xl border border-border bg-bg-elevated p-6 sm:p-8">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-bold text-text-primary tracking-tight">
+              System Architecture Diagram
+            </h2>
+            <a
+              href={project.architectureImage}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-mono text-accent-blue hover:underline flex items-center gap-1"
+            >
+              View Full High-Res Diagram
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+          <div className="overflow-hidden rounded-lg border border-border/80 bg-black/40 p-2 sm:p-4">
+            <img
+              src={project.architectureImage}
+              alt={`${project.title} Architecture Diagram`}
+              className="w-full h-auto object-contain max-h-[650px] rounded"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* System Architecture Interactive Nodes */}
       {project.architectureNodes && (
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-text-primary tracking-tight">
-            System Architecture & Pipeline Flow
+            Pipeline Flow & Component Nodes
           </h2>
           <ArchitectureDiagram nodes={project.architectureNodes} />
         </div>

@@ -10,11 +10,13 @@ export interface Project {
   slug: string;
   title: string;
   tagline: string;
+  period?: string;
   description: string;
   problem: string;
   solution: string;
   stack: string[];
   architectureNodes?: ArchitectureNode[];
+  architectureImage?: string;
   github?: string;
   liveDemo?: string;
   featured: boolean;

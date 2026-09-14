@@ -5,6 +5,7 @@ export const projectsData: Project[] = [
     slug: "community-tree-rag",
     title: "Multilingual Community Archive RAG & Event Engine",
     tagline: "End-to-End Archival Ingestion, OCR, Dual-Store Retrieval & Event DB",
+    period: "Jan 2026 – Present",
     description: "Production-grade archival RAG pipeline processing scanned, multilingual newsletters and historical community documents into semantic vector stores and structured relational database events.",
     problem: "Community newsletters and archives contain scanned, non-searchable, multilingual documents (Gujarati, Hindi, English). Extracting event timelines, historical records, and precise context manually was error-prone and unscalable.",
     solution: "Built a dual-path document processing workflow featuring PaddleOCR preprocessing, semantic chunking with vector embeddings in ChromaDB, structured event extraction into SQLite, and a smart query router backed by Gemini for contextual QA.",
@@ -21,11 +22,12 @@ export const projectsData: Project[] = [
     github: "https://github.com/kavyagada20/Multilingual-Community-RAG",
     featured: true,
     caseStudy: true,
+    architectureImage: "/images/projects/community-rag-architecture.jpg",
     highlights: [
-      "Multilingual OCR pipeline handling noisy scanned community PDF archives",
+      "Automated multi-agent ingestion pipeline handling noisy scanned community PDF archives (Vagad Patrika)",
       "Dual-store retrieval strategy: Vector embeddings (ChromaDB) + Relational metadata (SQLite)",
       "Smart query router dynamically delegating factual SQL filters vs. semantic RAG queries",
-      "Interactive Streamlit production demo serving live archival queries"
+      "Interactive Streamlit production demo serving live archival queries with page & date citations"
     ],
     architectureNodes: [
       { id: "1", label: "Patrika PDFs / Images", subtext: "Scanned Archive Documents", type: "input", connectsTo: ["2"] },
@@ -52,10 +54,11 @@ export const projectsData: Project[] = [
   {
     slug: "multi-agent-job-application-agent",
     title: "Multi-Agent Job Application Agent",
-    tagline: "Multi-Agent Workflow Automation System",
-    description: "An autonomous multi-agent engineering workflow designed to research target companies, analyze job descriptions against user resumes, and craft highly targeted application materials.",
+    tagline: "Autonomous Multi-Agent Application & Resume Tailoring Workflow",
+    period: "June to Sept 2026",
+    description: "An autonomous multi-agent engineering workflow designed to research target companies, analyze job descriptions against user resumes, calculate candidate match scores, and craft highly targeted application materials.",
     problem: "Tailoring job applications manually for dozens of roles is extremely time-consuming, highly repetitive, and often fails to capture company-specific nuances or keyword requirements.",
-    solution: "Engineered an agentic workflow orchestration system using specialized AI agents (Research, Analysis, Tailoring, Writing) operating sequentially with real-time web search and fast LLM synthesis.",
+    solution: "Engineered an agentic workflow orchestration system using specialized AI agents (Research, Analysis, Tailoring, Writing) operating sequentially with real-time web search, STAR method resume bullet customization, automated DOCX generation, and one-click ZIP export.",
     stack: [
       "Python",
       "Flask",
@@ -68,10 +71,10 @@ export const projectsData: Project[] = [
     featured: true,
     caseStudy: true,
     highlights: [
-      "Sequential multi-agent workflow architecture with specialized prompt contracts",
-      "Real-time company intelligence retrieval via Tavily Search API integration",
-      "High-throughput inference leveraging Groq Llama-3 acceleration",
-      "Clean Flask REST backend paired with responsive Tailwind UI"
+      "Multi-agent AI system calculating 0–100% candidate-job match score and identifying skill gaps",
+      "STAR-based resume bullet tailoring aligned directly with target job descriptions",
+      "Generates cover letters, recruiter outreach emails, LinkedIn InMails, and STAR interview prep guides",
+      "Automated DOCX customized resume generation with one-click ZIP package export"
     ],
     architectureNodes: [
       { id: "1", label: "Job & Resume Input", subtext: "URL / Job Description", type: "input", connectsTo: ["2"] },
@@ -93,19 +96,65 @@ export const projectsData: Project[] = [
     ]
   },
   {
+    slug: "aquascan",
+    title: "AquaScan — Aquatic Waste & Pollution Reporting System",
+    tagline: "AI-Assisted Aquatic Waste Detection & Environmental Reporting Platform",
+    period: "Oct 2025 – Jun 2026",
+    description: "An end-to-end applied AI + full-stack platform combining computer vision (YOLO) for aquatic waste detection, REST APIs, role-based workflows for citizens and authorities, report tracking, and gamification.",
+    problem: "Water pollution and aquatic waste often go unreported or untracked due to friction in reporting mechanisms, lack of structured data for cleanup authorities, and absence of automated severity classification.",
+    solution: "Built an AI-assisted reporting platform where users upload pollution images, automated YOLO-based computer vision models analyze waste severity, and structured reports are stored with location geotags and routed to municipal authorities with status tracking and cleanup workflows.",
+    stack: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Python",
+      "YOLO",
+      "OpenCV",
+      "Vite",
+      "REST APIs"
+    ],
+    featured: true,
+    caseStudy: true,
+    architectureImage: "/images/projects/aquascan-architecture.png",
+    highlights: [
+      "AI-assisted aquatic waste reporting platform using computer vision (YOLO) to analyze pollution images",
+      "Generates structured environmental reports enriched with geotag location metadata and severity scoring",
+      "Authentication and role-based access control (RBAC) for citizens and municipal authorities",
+      "Comprehensive dashboards with report tracking, cleanup management workflows, user badges, and impact points"
+    ],
+    architectureNodes: [
+      { id: "1", label: "User App (React / Mobile)", subtext: "Image Upload & Geotag", type: "input", connectsTo: ["2"] },
+      { id: "2", label: "Backend API (Node + Express)", subtext: "Auth & Report Service", type: "process", connectsTo: ["3", "4"] },
+      { id: "3", label: "ML Service (FastAPI + YOLO)", subtext: "Object Detection & Severity", type: "process", connectsTo: ["4"] },
+      { id: "4", label: "Database (MongoDB)", subtext: "Reports, Users & Analytics", type: "storage", connectsTo: ["5"] },
+      { id: "5", label: "Dashboard & Operations Panel", subtext: "User & Committee Portals", type: "output" }
+    ],
+    keyChallenges: [
+      "Optimizing YOLO object detection latency for diverse water body and waste lighting conditions",
+      "Managing asynchronous ML inference calls from the Node.js Express backend API",
+      "Designing responsive, real-time tracking portals for both citizen reporters and municipal cleanup committees"
+    ],
+    learnings: [
+      "Decoupling heavy ML inference services (FastAPI/Python) from web backend APIs (Node/Express) ensures high system scalability",
+      "Gamification mechanics (badges, points, streaks) significantly increase user participation in environmental reporting"
+    ]
+  },
+  {
     slug: "healthcare-ai-assistant",
     title: "Intelligent Healthcare Assistance System",
     tagline: "AI-Powered Document Analysis & Symptom Assistance",
+    period: "Dec 2025",
     description: "An AI-assisted document parsing and symptom analysis platform for extracting insights from medical reports and providing preliminary guidance.",
     problem: "Unstructured medical PDFs and clinical lab reports contain complex medical jargon that patients struggle to interpret prior to medical consultations.",
-    solution: "Developed an intelligent document analysis tool that ingests medical reports, extracts key biomarkers and diagnoses via Gemini LLM, and presents simplified, structured summaries with safety guardrails.",
+    solution: "Developed an AI-powered healthcare web application that analyzes user symptoms and uploaded blood report PDFs to provide structured, non-diagnostic health guidance with safety guardrails.",
     stack: [
-      "Python",
-      "Google Gemini API",
-      "PyMuPDF",
-      "REST APIs",
       "HTML5 / CSS3",
-      "JavaScript"
+      "JavaScript",
+      "Google Gemini API",
+      "Python",
+      "PyMuPDF",
+      "REST APIs"
     ],
     github: "https://github.com/kavyagada20/sehatseva",
     liveDemo: "https://sehatseva.netlify.app/",
@@ -113,10 +162,10 @@ export const projectsData: Project[] = [
     caseStudy: true,
     disclaimer: "For demo and educational purposes only. Not a medical diagnostic substitute.",
     highlights: [
-      "PDF medical report extraction and structured text parsing",
-      "Symptom assessment workflow with intelligent follow-up prompts",
-      "Safety disclaimers and strictly scoped non-diagnostic advisory bounds",
-      "Clean web interface for instant report uploads and summaries"
+      "PDF medical report extraction and structured biomarker parsing",
+      "Symptom assessment workflow generating urgency levels and specialist recommendations",
+      "Interactive results dashboard displaying blood report insights and hospital guidance",
+      "Strict safety guardrails ensuring non-diagnostic advisory bounds"
     ],
     architectureNodes: [
       { id: "1", label: "Medical PDF / Report", subtext: "Lab Results / Symptoms", type: "input", connectsTo: ["2"] },

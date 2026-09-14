@@ -7,11 +7,12 @@ import { portfolioMeta } from '@/data/portfolio';
 import { CTAButton } from '@/components/ui/cta-button';
 
 const navItems = [
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Problem Solving', href: '#problem-solving' },
-  { label: 'Education', href: '#education' },
+  { label: 'About', href: '/#about' },
+  { label: 'Projects', href: '/#projects' },
+  { label: 'Experience', href: '/#experience' },
+  { label: 'Problem Solving', href: '/#problem-solving' },
+  { label: 'Skills', href: '/#skills' },
+  { label: 'Education', href: '/#education' },
 ];
 
 export const Navbar: React.FC = () => {
