@@ -107,7 +107,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         <h2 className="text-sm font-mono font-bold text-accent-blue uppercase tracking-wider">
           // OVERVIEW
         </h2>
-        <p className="text-base text-text-muted leading-relaxed">
+        <p className="text-base text-text-muted leading-relaxed text-justify">
           {project.description}
         </p>
       </div>
@@ -118,7 +118,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           <h2 className="text-sm font-mono font-bold text-red-400 uppercase tracking-wider">
             // THE ENGINEERING PROBLEM
           </h2>
-          <p className="text-sm text-text-muted leading-relaxed">
+          <p className="text-sm text-text-muted leading-relaxed text-justify">
             {project.problem}
           </p>
         </div>
@@ -127,7 +127,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           <h2 className="text-sm font-mono font-bold text-emerald-400 uppercase tracking-wider">
             // THE ARCHITECTURAL SOLUTION
           </h2>
-          <p className="text-sm text-text-muted leading-relaxed">
+          <p className="text-sm text-text-muted leading-relaxed text-justify">
             {project.solution}
           </p>
         </div>
@@ -181,7 +181,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             {project.highlights.map((item, idx) => (
               <li key={idx} className="flex items-start gap-3 text-sm text-text-muted">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                <span>{item}</span>
+                <span className="text-justify">{item}</span>
               </li>
             ))}
           </ul>
@@ -198,7 +198,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             </h2>
             <ul className="space-y-2">
               {project.keyChallenges.map((challenge, idx) => (
-                <li key={idx} className="text-xs sm:text-sm text-text-muted font-mono list-disc list-inside">
+                <li key={idx} className="text-xs sm:text-sm text-text-muted font-mono list-disc list-inside text-justify">
                   {challenge}
                 </li>
               ))}
@@ -214,7 +214,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             </h2>
             <ul className="space-y-2">
               {project.learnings.map((learning, idx) => (
-                <li key={idx} className="text-xs sm:text-sm text-text-muted font-mono list-disc list-inside">
+                <li key={idx} className="text-xs sm:text-sm text-text-muted font-mono list-disc list-inside text-justify">
                   {learning}
                 </li>
               ))}

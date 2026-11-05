@@ -67,7 +67,7 @@ export const ExperienceSection: React.FC = () => {
                   {exp.bullets.map((bullet, bIdx) => (
                     <li key={bIdx} className="flex items-start gap-3 text-xs sm:text-sm text-text-muted leading-relaxed">
                       <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                      <span>{bullet}</span>
+                      <span className="text-justify">{bullet}</span>
                     </li>
                   ))}
                 </ul>

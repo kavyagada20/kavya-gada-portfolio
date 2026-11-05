@@ -76,7 +76,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, isPrimary = f
           <p className="text-sm font-mono text-accent-blue">
             {project.tagline}
           </p>
-          <p className="text-base text-text-muted leading-relaxed pt-1">
+          <p className="text-base text-text-muted leading-relaxed pt-1 text-justify">
             {project.description}
           </p>
         </div>
@@ -87,7 +87,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, isPrimary = f
             <span className="text-xs font-mono font-bold text-red-400 uppercase tracking-wider block">
               // PROBLEM
             </span>
-            <p className="text-xs sm:text-sm text-text-muted leading-normal">
+            <p className="text-xs sm:text-sm text-text-muted leading-normal text-justify">
               {project.problem}
             </p>
           </div>
@@ -96,7 +96,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, isPrimary = f
             <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider block">
               // SOLUTION
             </span>
-            <p className="text-xs sm:text-sm text-text-muted leading-normal">
+            <p className="text-xs sm:text-sm text-text-muted leading-normal text-justify">
               {project.solution}
             </p>
           </div>
