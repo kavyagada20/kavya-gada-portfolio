@@ -8,8 +8,8 @@ import { CTAButton } from '@/components/ui/cta-button';
 
 const navItems = [
   { label: 'About', href: '/#about' },
-  { label: 'Projects', href: '/#projects' },
   { label: 'Experience', href: '/#experience' },
+  { label: 'Projects', href: '/#projects' },
   { label: 'Problem Solving', href: '/#problem-solving' },
   { label: 'Skills', href: '/#skills' },
   { label: 'Education', href: '/#education' },

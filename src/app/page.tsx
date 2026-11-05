@@ -13,8 +13,8 @@ export default function HomePage() {
     <div className="flex flex-col space-y-0">
       <HeroSection />
       <AboutSection />
-      <ProjectGridSection />
       <ExperienceSection />
+      <ProjectGridSection />
       <ProblemSolvingSection />
       <SkillsSection />
       <EducationSection />

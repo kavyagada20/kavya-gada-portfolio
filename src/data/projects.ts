@@ -4,19 +4,21 @@ export const projectsData: Project[] = [
   {
     slug: "community-tree-rag",
     title: "Multilingual Community Archive RAG & Event Engine",
-    tagline: "End-to-End Archival Ingestion, OCR, Dual-Store Retrieval & Event DB",
-    period: "Jan 2026 – Present",
-    description: "Production-grade archival RAG pipeline processing scanned, multilingual newsletters and historical community documents into semantic vector stores and structured relational database events.",
-    problem: "Community newsletters and archives contain scanned, non-searchable, multilingual documents (Gujarati, Hindi, English). Extracting event timelines, historical records, and precise context manually was error-prone and unscalable.",
-    solution: "Built a dual-path document processing workflow featuring PaddleOCR preprocessing, semantic chunking with vector embeddings in ChromaDB, structured event extraction into SQLite, and a smart query router backed by Gemini for contextual QA.",
+    tagline: "Multilingual Archival Ingestion, Gemini Vision OCR, ChromaDB RAG & Automated Event Calendar",
+    period: "Jun 2026 – Sep 2026",
+    description: "AI-powered multilingual information retrieval and event management system developed during an AI/ML internship at Community Tree (whose multi-community platform serves 1.15 lakh+ overall daily active users across several communities, with the Vagad community representing an estimated ~50K–100K population). Built to process 2 years of daily-published Gujarati Vagad Patrika newspaper archives using Playwright and Google Gemini Vision OCR, storing 768-dimensional normalized embeddings in ChromaDB (7,020 chunks locally indexed) with semantic reranking and streaming responses. Operates a dual delivery model: an interactive Streamlit RAG chatbot with document summarization for archival search, and an automated event engine publishing 1,739 canonical events into SQLite and web feeds with dedicated event detail pages engineered for planned integration into the main Community Tree app.",
+    problem: "Accessing information across two years of daily-published historical Vagad Patrika newspaper PDFs was hindered by legacy scanned documents, complex multi-column layouts, mixed Gujarati and English text, and outdated font encodings (SHREE-GUJ7) where direct text copying yielded garbled characters. Traditional keyword search failed across language boundaries and phrasing variations, while event announcements were scattered across hundreds of issues without centralized tracking.",
+    solution: "Architected a dual-delivery production pipeline: (1) An interactive Multilingual RAG Chatbot (demonstrated via Streamlit) featuring streaming responses, automated document summarization, and semantic reranking, powered by Playwright and PyMuPDF rasterization at 300 DPI, Google Gemini Vision OCR with an automated 15-key round-robin rotation pool, context-aware semantic chunking, and 768-dimensional Gemini embeddings (models/gemini-embedding-001) in ChromaDB; and (2) An Automated Event Calendar engine extracting structured event entities, normalizing event dates, deduplicating records across 270 newspaper editions in an authoritative SQLite database (data/vagad_events.db), and publishing a canonical events.json feed with dedicated event detail pages engineered for planned integration into Community Tree's main mobile and web application.",
     stack: [
       "Python",
-      "Streamlit",
       "Google Gemini API",
       "ChromaDB",
       "SQLite",
-      "PaddleOCR",
-      "PyMuPDF"
+      "Playwright",
+      "PyMuPDF",
+      "Streamlit",
+      "MySQL",
+      "JavaScript"
     ],
     liveDemo: "https://multilingual-community-rag-1.streamlit.app/",
     github: "https://github.com/kavyagada20/Multilingual-Community-RAG",
@@ -24,31 +26,35 @@ export const projectsData: Project[] = [
     caseStudy: true,
     architectureImage: "/images/projects/community-rag-architecture.jpg",
     highlights: [
-      "Automated multi-agent ingestion pipeline handling noisy scanned community PDF archives (Vagad Patrika)",
-      "Dual-store retrieval strategy: Vector embeddings (ChromaDB) + Relational metadata (SQLite)",
-      "Smart query router dynamically delegating factual SQL filters vs. semantic RAG queries",
-      "Interactive Streamlit production demo serving live archival queries with page & date citations"
+      "Engineered for Community Tree's multi-community platform ecosystem (1.15L+ platform-wide DAU across multiple community groups), focusing on 2 years of daily-published Vagad community archival records (~50K–100K demographic)",
+      "Automated multilingual data ingestion pipeline combining Playwright and Gemini Vision OCR (gemini-flash-latest, gemini-3.1-flash-lite) with automated 15-key round-robin rotation for complex Gujarati multi-column layouts",
+      "RAG chatbot architecture with streaming responses, document summarization, and semantic reranking over 768-dimensional Gemini embeddings in ChromaDB (7,020 chunks locally indexed)",
+      "Automated Event Calendar pipeline extracting, normalizing, deduplicating, and enriching 1,739 canonical events across 270 newspaper sources into SQLite and canonical events.json, engineered for planned integration into the main Community Tree application",
+      "Interactive event filtering, search, sorting, and dedicated event detail pages with 14/14 passing automated tests in pytest (tests/test_event_calendar.py)",
+      "Dual delivery architecture combining an interactive Streamlit RAG research demo with a structured JSON/SQLite event publisher ready for app integration"
     ],
     architectureNodes: [
-      { id: "1", label: "Patrika PDFs / Images", subtext: "Scanned Archive Documents", type: "input", connectsTo: ["2"] },
-      { id: "2", label: "OCR & Text Cleaning", subtext: "PaddleOCR + PyMuPDF", type: "process", connectsTo: ["3a", "3b"] },
-      { id: "3a", label: "Semantic Chunker", subtext: "Contextual Chunking", type: "process", connectsTo: ["4a"] },
-      { id: "3b", label: "Event Extractor", subtext: "Structured Event Parser", type: "process", connectsTo: ["4b"] },
-      { id: "4a", label: "ChromaDB", subtext: "Vector Store (Embeddings)", type: "storage", connectsTo: ["5"] },
-      { id: "4b", label: "SQLite DB", subtext: "Structured Event DB", type: "storage", connectsTo: ["5"] },
-      { id: "5", label: "Smart Query Router", subtext: "Hybrid Retrieval Engine", type: "router", connectsTo: ["6"] },
-      { id: "6", label: "Gemini LLM", subtext: "RAG Answer Generation", type: "process", connectsTo: ["7"] },
-      { id: "7", label: "Streamlit UI", subtext: "User Interface", type: "output" }
+      { id: "1", label: "Patrika PDFs", subtext: "Playwright Ingestion & Scans", type: "input", connectsTo: ["2"] },
+      { id: "2", label: "Gemini Vision OCR", subtext: "PyMuPDF 300 DPI + 15-Key Pool", type: "process", connectsTo: ["3a", "3b"] },
+      { id: "3a", label: "Clean, Classify & Chunk", subtext: "core/ Modules & Summarization", type: "process", connectsTo: ["4a"] },
+      { id: "3b", label: "Event Extractor", subtext: "event_calendar/ Engine", type: "process", connectsTo: ["4b"] },
+      { id: "4a", label: "ChromaDB & Reranking", subtext: "768-Dim Gemini Embeddings (7k Chunks)", type: "storage", connectsTo: ["5"] },
+      { id: "4b", label: "SQLite DB", subtext: "data/vagad_events.db (1.7k Events)", type: "storage", connectsTo: ["5"] },
+      { id: "5", label: "Query Router", subtext: "core/query_router.py Intent Filter", type: "router", connectsTo: ["6"] },
+      { id: "6", label: "Gemini LLM", subtext: "Streaming RAG QA & Guardrails", type: "process", connectsTo: ["7"] },
+      { id: "7", label: "App & Web Delivery", subtext: "App Event Feed (JSON) & Streamlit Demo", type: "output" }
     ],
     keyChallenges: [
-      "Handling OCR noise and multi-column layouts in legacy scanned newsletters",
-      "Balancing exact event date filtering with semantic similarity search",
-      "Optimizing query routing latencies for low-resource deployment on Streamlit Cloud"
+      "Resolving legacy Gujarati font encodings (SHREE-GUJ7) and noisy scanned layouts where direct text extraction failed",
+      "Eliminating offline OCR latency bottlenecks (~45–90s/page) by migrating to concurrent Google Gemini Vision OCR with multi-key rate-limit rotation",
+      "Deduplicating multi-day and recurring event announcements across 270 newspaper editions while strictly separating publication dates from event dates",
+      "Maintaining state-tracked incremental execution and resumability across multi-stage ingestion pipelines without duplicating database or vector entries"
     ],
     learnings: [
-      "Hybrid search (relational + vector) vastly outperforms pure vector search for event-based queries",
-      "Robust document cleaning prior to chunking prevents embedding degradation",
-      "Structuring prompt outputs into JSON schemas simplifies database insertions"
+      "Gemini Vision OCR delivers superior accuracy over traditional offline OCR on dense, multi-column Indic layouts with mixed typography",
+      "Dual-store architecture (SQLite relational + ChromaDB vector) outperforms pure vector search by enabling deterministic date and entity filtering",
+      "Automated API key round-robin rotation successfully mitigates rate-limiting barriers during high-volume batch document extraction",
+      "Decoupling the structured event feed (for planned app integration) from the exploratory conversational interface simplifies deployment paths"
     ]
   },
   {

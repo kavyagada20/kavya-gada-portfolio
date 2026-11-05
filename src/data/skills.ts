@@ -2,25 +2,41 @@ import { SkillCategory } from '@/types';
 
 export const skillsData: SkillCategory[] = [
   {
-    title: "AI / LLM & Agents",
+    title: "AI & Agentic Systems",
     skills: [
       "Retrieval-Augmented Generation (RAG)",
-      "Multi-Agent Workflows",
-      "Google Gemini API",
-      "Groq Llama-3 Inference",
-      "LangChain / LlamaIndex Patterns",
-      "Prompt Engineering & Guardrails"
+      "Agentic AI Systems & Workflows",
+      "LangChain",
+      "LangGraph",
+      "LLM Applications & APIs",
+      "Text-Based Generative AI",
+      "Prompt Engineering & Guardrails",
+      "Natural Language Processing (NLP)"
     ]
   },
   {
-    title: "Machine Learning & Document AI",
+    title: "Machine Learning & Data Science",
     skills: [
-      "OCR & Document Intelligence",
-      "PaddleOCR",
-      "PyMuPDF / PDF Processing",
+      "Machine Learning",
+      "Scikit-learn",
+      "Hugging Face Transformers",
       "Vector Embeddings",
-      "Semantic Chunking",
-      "Supervised Learning"
+      "Semantic Search & Reranking",
+      "NumPy",
+      "Pandas",
+      "Matplotlib"
+    ]
+  },
+  {
+    title: "Computer Vision & Document AI",
+    skills: [
+      "Computer Vision (YOLO)",
+      "Person Detection & Video Analytics",
+      "Gemini Vision OCR",
+      "Document Intelligence",
+      "PyMuPDF (fitz)",
+      "Playwright Automation",
+      "Google Ads API"
     ]
   },
   {
@@ -28,8 +44,10 @@ export const skillsData: SkillCategory[] = [
     skills: [
       "Python",
       "C++",
+      "C",
+      "Java",
+      "SQL",
       "TypeScript / JavaScript",
-      "SQL (MySQL / SQLite)",
       "HTML5 / CSS3"
     ]
   },
@@ -37,40 +55,36 @@ export const skillsData: SkillCategory[] = [
     title: "Databases & Vector Stores",
     skills: [
       "ChromaDB",
-      "SQLite",
       "MySQL",
-      "Vector Search & Hybrid Retrieval"
-    ]
-  },
-  {
-    title: "Software Engineering & Web",
-    skills: [
-      "REST APIs",
-      "Flask",
-      "Streamlit",
-      "Next.js / React",
-      "Tailwind CSS",
-      "Object-Oriented Programming (OOP)"
+      "SQLite",
+      "Vector Search",
+      "Hybrid Retrieval",
+      "Database Optimization"
     ]
   },
   {
     title: "Core CS Fundamentals",
     skills: [
       "Data Structures & Algorithms (DSA)",
+      "Object-Oriented Programming (OOP)",
       "Database Management Systems (DBMS)",
       "Operating Systems (OS)",
       "Computer Networks",
-      "System Design Concepts"
+      "System Design"
     ]
   },
   {
-    title: "Developer Tools & Environment",
+    title: "Developer Tools & Web Engineering",
     skills: [
       "Git / GitHub",
+      "Postman",
+      "Linux / Bash",
       "VS Code",
-      "Tavily Search API",
-      "Linux / Bash Commands",
-      "Vercel Deployment"
+      "Jupyter Notebook",
+      "Google Colab",
+      "REST APIs",
+      "Streamlit",
+      "Flask"
     ]
   }
 ];

@@ -23,7 +23,7 @@ const terminalData: TerminalLine[] = [
     ]
   },
   { type: 'command', content: 'status' },
-  { type: 'output', content: 'Building archival RAG & ingestion systems @ Community Tree' },
+  { type: 'output', content: 'Software Engineer Intern @ Binge Consulting' },
 ];
 
 export const TerminalWidget: React.FC = () => {

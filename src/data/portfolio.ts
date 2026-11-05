@@ -6,7 +6,7 @@ export const portfolioMeta: PortfolioData = {
   secondaryRoles: ["Software Engineer", "AI Engineer", "Agentic AI Engineer"],
   tagline: "Building intelligent systems, RAG pipelines, AI agents, and production software applications.",
   coreStatement: "Building intelligent systems, RAG pipelines, AI agents, and production software applications.",
-  currentStatus: "Currently building AI systems @ Community Tree",
+  currentStatus: "Software Engineer Intern @ Binge Consulting",
   educationSummary: "B.Tech Artificial Intelligence & Machine Learning · DJSCE · Mumbai",
   location: "Mumbai, India",
   socialLinks: {
