@@ -104,49 +104,53 @@ export const projectsData: Project[] = [
   {
     slug: "aquascan",
     title: "AquaScan — Aquatic Waste & Pollution Reporting System",
-    tagline: "AI-Assisted Aquatic Waste Detection & Environmental Reporting Platform",
+    tagline: "AI-Assisted Aquatic Waste Detection & Environmental Cleanup Coordination Platform",
     period: "Oct 2025 – Jun 2026",
-    description: "An end-to-end applied AI and full-stack platform combining a decoupled computer vision (YOLO) microservice, multimodal Gemini Vision fallback, Node.js REST orchestration, role-based citizen and committee workflows, and automated gamification.",
+    description: "End-to-end environmental intelligence and municipal dispatch platform designed to detect aquatic waste, quantify pollution severity, and coordinate cleanup operations between citizen reporters and municipal environmental committees. Solves real-world computer vision edge cases through a decoupled hybrid AI architecture combining dedicated Python/FastAPI YOLO inference, OpenCV heuristic pre-filters (Laplacian blur variance + HSV water masking), Google Gemini 2.5 Flash multimodal fallback (<0.60 confidence or blur), Node.js/Express orchestration, automated gamification (35 pts/report across 6 badge tiers), and dual-role operational portals.",
     problem: "Aquatic waste and water pollution frequently go unaddressed due to high reporting friction, a lack of automated severity classification, and the absence of structured, actionable data for municipal cleanup committees.",
-    solution: "Engineered a dual-tier AI reporting platform where users submit pollution sightings through a mobile-first web interface. A dedicated Python/FastAPI microservice runs YOLO inference to detect waste items and evaluate pollution severity. For edge cases (blurry images, low confidence, or non-aquatic scenes), the backend orchestrates a multimodal vision fallback using Google Gemini 2.5 Flash before structuring report data for municipal cleanup tracking and citizen gamification.",
+    solution: "Engineered a decoupled, dual-tier AI reporting and dispatch platform. Citizens submit sightings via a mobile-first web interface. A standalone Python/FastAPI microservice executes custom YOLO object detection (AquaScan_best.pt) to locate debris and evaluate coverage. When images suffer from low confidence (< 0.60), severe blur (Laplacian variance < 20), or non-aquatic backgrounds, the Node.js backend orchestrates an automated multimodal vision fallback to Google Gemini 2.5 Flash for scene understanding before calculating urgency scores (1–10 scale) and structuring data for municipal cleanup triage and citizen gamification.",
     stack: [
-      "React (Vite)",
+      "React 18 (Vite)",
       "Node.js",
       "Express",
-      "Python",
+      "Python 3.11",
       "FastAPI",
-      "YOLO (Ultralytics)",
-      "Google Gemini Vision",
+      "Ultralytics YOLO",
+      "PyTorch",
+      "Google Gemini 2.5 Flash",
       "OpenCV",
-      "REST APIs",
-      "Docker"
+      "Docker",
+      "REST APIs"
     ],
     featured: true,
     caseStudy: true,
     architectureImage: "/images/projects/aquascan-architecture.png",
     highlights: [
-      "Decoupled AI Microservice: Engineered a standalone Python FastAPI service serving a fine-tuned YOLO model for real-time aquatic debris detection.",
-      "Hybrid Heuristic + LLM Fallback: Implemented OpenCV Laplacian blur analysis and HSV water-surface masking, automatically cascading to Google Gemini 2.5 Flash when YOLO confidence drops below 0.6.",
-      "Dynamic Severity & Urgency Scoring: Created algorithmic post-processing to compute waste density and coverage, translating raw bounding boxes into standardized municipal severity metrics (Low, Medium, High).",
-      "Dual-Perspective Operational Workflows: Built synchronized portals for citizen reporting and municipal committee dispatch, with status histories (Submitted → Under Review → In Progress → Resolved).",
-      "Gamification Engine: Integrated automated impact scoring (35 pts/report) with dynamic tier calculation across 6 citizen levels (Wayfinder to Eternal)."
+      "Decoupled AI Microservice: Standalone Python 3.11 / FastAPI service running custom YOLO (AquaScan_best.pt) with 640x640 normalization, EXIF orientation correction, and isolated PyTorch memory management.",
+      "Hybrid Heuristic Pre-Check & Gemini 2.5 Flash Cascade: Custom OpenCV Laplacian variance blur detection (threshold = 20) and HSV color-space water segmentation; automatically cascades to Google Gemini 2.5 Flash when YOLO confidence drops below 0.60 or images are ambiguous.",
+      "Dynamic Severity & Action Routing: Algorithmic post-processing evaluating bounding box spread and surface density to translate raw detections into municipal severity levels (Low, Medium, High) and urgency ratings (1–10 scale).",
+      "Dual-Perspective Operational Dashboards: Mobile-first citizen reporting viewport with coordinate capture and contextual status bot, paired with a committee command console for report triage, investigation, and status transitions (Submitted → Under Review → In Progress → Resolved).",
+      "Civic Gamification Engine: Automated impact ledger awarding +35 points per verified report, driving real-time tier progression across 6 citizen badge ranks from Wayfinder (0 pts) to Eternal (50,000 pts).",
+      "Containerized Multi-Tier Deployment: Multi-service production topology containerized via Docker and configured for Render blueprint orchestration (render.yaml) across ML service, backend API, and Vite SPA."
     ],
     architectureNodes: [
-      { id: "1", label: "User App (React / SPA)", subtext: "Photo Capture & Geolocation", type: "input", connectsTo: ["2"] },
-      { id: "2", label: "Backend API (Node + Express)", subtext: "Orchestration & Gamification", type: "process", connectsTo: ["3", "4"] },
-      { id: "3", label: "ML Microservice (FastAPI)", subtext: "YOLO Debris & Severity Scoring", type: "process", connectsTo: ["5"] },
+      { id: "1", label: "Citizen App (React SPA)", subtext: "Photo Capture & Geolocation", type: "input", connectsTo: ["2"] },
+      { id: "2", label: "Backend API Gateway", subtext: "Node.js/Express Orchestrator", type: "process", connectsTo: ["3", "4"] },
+      { id: "3", label: "FastAPI ML Service", subtext: "YOLO Debris & Severity Scoring", type: "process", connectsTo: ["5"] },
       { id: "4", label: "Fallback Engine", subtext: "OpenCV Blur & Gemini 2.5 Flash", type: "router", connectsTo: ["5"] },
-      { id: "5", label: "Operations Portal", subtext: "Lifecycle Tracking & Cleanup Ops", type: "output" }
+      { id: "5", label: "Committee Command Portal", subtext: "Triage & Field Dispatch Workflow", type: "output" }
     ],
     keyChallenges: [
-      "Handling False Positives & Ambiguous Imagery: Standard object detection models often trigger false alarms on non-water backgrounds or blurry water reflections. Solved by implementing an OpenCV water-ratio pre-filter combined with a vision model fallback.",
-      "Microservice Communication & Payload Handling: Coordinated multipart image stream forwarding between Express and FastAPI with in-memory buffering to minimize disk I/O bottlenecks.",
-      "Mobile-First Responsive Experience: Designed an app-like mobile viewport with reactive client-side state synchronization for fast field-reporting performance."
+      "False Positives on Non-Water Images: Standard YOLO models frequently detect plastic on pavements, desks, or dry ground. Solved by engineering an HSV color-segmentation algorithm in OpenCV to calculate water surface percentage, rejecting images with <5% visible water before inference.",
+      "Handling Blurry & Ambiguous Field Imagery: Built Laplacian variance blur detection (blur score < 20) and confidence monitors (<0.60) that automatically marshal image buffers into base64 and trigger Google Gemini 2.5 Flash with structured JSON schema enforcement.",
+      "Microservice Decoupling & In-Memory Streaming: Forwarded multipart image streams directly between Express and FastAPI using in-memory buffering (Multer memoryStorage) to eliminate disk I/O bottlenecks and prevent PyTorch CPU execution from blocking the Node.js event loop.",
+      "Audit Trail & Lifecycle State History: Designed an append-only statusHistory array on every report document recording timestamps, modifier identity, and official committee remarks across multi-stage cleanup dispatch."
     ],
     learnings: [
-      "Decoupling compute-heavy PyTorch/YOLO inference from web request routing prevents event-loop blocking and ensures predictable backend response times.",
-      "Multimodal fallback pipelines drastically improve system resilience against real-world user photography edge cases.",
-      "Clear visual progression (badges, streaks, impact counters) turns passive reporting into an engaging civic habit."
+      "Decoupling compute-heavy PyTorch and YOLO inference into a dedicated microservice prevents event-loop blocking and guarantees predictable web API response latencies.",
+      "Cascading from fast, lightweight local object detection models to multimodal LLMs (Gemini 2.5 Flash) provides maximum cost-efficiency while maintaining near-100% resilience against field photography edge cases.",
+      "Pre-filtering out-of-domain images using OpenCV heuristics (water-ratio masking and Laplacian blur) protects downstream detection pipelines from data pollution.",
+      "Visual progression mechanics (badges, points ledger, tier levels) transform passive environmental reporting into a persistent, engaging civic habit."
     ]
   },
   {
